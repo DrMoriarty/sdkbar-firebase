@@ -1,0 +1,28 @@
+
+sdkbox.copy_files(['app'], PLUGIN_PATH, ANDROID_STUDIO_PROJECT_DIR)
+sdkbox.copy_files(['ios'], PLUGIN_PATH, IOS_PROJECT_DIR)
+sdkbox.copy_files(['Classes/Firebase.cpp', 'Classes/Firebase.hpp'], PLUGIN_PATH, COCOS_CLASSES_DIR)
+sdkbox.copy_files(['ios/firebase.framework'], PLUGIN_PATH, IOS_PROJECT_DIR)
+
+sdkbox.android_add_static_libraries(['firebase'])
+sdkbox.android_add_calls(['import-module, ./firebase'])
+sdkbar.gradle_dependencies(["compile 'com.google.firebase:firebase-core:16.0.0'"])
+
+sdkbox.xcode_add_sources(['Firebase.cpp'])
+sdkbox.xcode_add_frameworks(['firebase.framework'])
+
+sdkbar.appDelegateInject({
+    'marker': SDKBOX_PACKAGE_NAME,
+    'android': {
+         'include': 'Firebase.hpp',
+         'function': 'register_all_firebase_framework'
+    },
+    'ios': {
+         'include': 'Firebase.hpp',
+         'function': 'register_all_firebase_framework'
+    }
+})
+
+sdkbox.android_add_sources(['../../Classes/Firebase.cpp'])
+
+
