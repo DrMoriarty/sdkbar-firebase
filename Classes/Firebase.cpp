@@ -1,6 +1,6 @@
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#import <Foundation/Foundation.h>
-#endif
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//#import <Foundation/Foundation.h>
+//#endif
 #include "Firebase.hpp"
 #include "scripting/js-bindings/manual/cocos2d_specifics.hpp"
 #include "scripting/js-bindings/manual/js_manual_conversions.h"
@@ -48,6 +48,7 @@ static bool jsb_firebase_inited(JSContext *cx, uint32_t argc, jsval *vp)
 }
 
 static void firebase_init()
+{
     printLog("[Firebase] Init plugin");
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     // Initialize Firebase for Android.
@@ -64,7 +65,7 @@ static void firebase_init()
 //
 ///////////////////////////////////////
 
-void register_all_admob_framework(JSContext* cx, JS::HandleObject obj) {
+void register_all_firebase_framework(JSContext* cx, JS::HandleObject obj) {
     printLog("[Firebase] register js interface");
     JS::RootedObject ns(cx);
     get_or_create_js_obj(cx, obj, "firebase", &ns);
