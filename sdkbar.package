@@ -6,7 +6,7 @@ sdkbox.copy_files(['ios/firebase.framework', 'ios/FirebaseCore.framework', 'ios/
 
 sdkbox.android_add_static_libraries(['firebase'])
 sdkbox.android_add_calls(['import-module, ./firebase'])
-sdkbar.gradle_dependencies(["compile 'com.google.firebase:firebase-core:16.0.5'"])
+sdkbar.gradle_dependencies(["compile 'com.google.firebase:firebase-core:16.0.6'"])
 
 sdkbox.xcode_add_sources(['Firebase.cpp'])
 sdkbox.xcode_add_frameworks(['firebase.framework', 'FirebaseCore.framework', 'FirebaseDynamicLinks.framework', 'Protobuf.framework'])
