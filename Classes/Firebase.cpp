@@ -38,6 +38,7 @@ static bool jsb_firebase_inited(JSContext *cx, uint32_t argc, jsval *vp)
         } else {
             rec.rval().set(JSVAL_FALSE);
         }
+        return true;
     } else {
         JS_ReportError(cx, "Invalid number of arguments");
         rec.rval().set(JSVAL_FALSE);
